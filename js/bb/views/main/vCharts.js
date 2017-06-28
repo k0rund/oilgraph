@@ -36,7 +36,7 @@ function vCharts () {
             this.$el.height(this.height);
             
             for (let i = 0; i < data.length; i++) {
-                for (let j = 60; j > 0; j--) {
+                for (let j = 61; j > 0; j--) {
                     if (data[i]["dt"] === (this.startTime - j)) {
                         this.data.push(data[i]);
                     }

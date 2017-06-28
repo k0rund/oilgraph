@@ -74,7 +74,7 @@ class Chart {
             }
         });
         let canvas = this.charts.path(path);
-        canvas.scale(1, (this.$chartsBlock.height() / 59).toFixed(4), 0, 0);
+        canvas.scale(1, (this.$chartsBlock.height() / 60).toFixed(4), 0, 0);
         canvas.attr({stroke: color});
         let line = this.charts.path(coordinatesLineTime);
         line.attr("class", "line");
