@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href ="favicon.ico" type= "image/x-icon">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        
+        
+    </head>
+    <body class="flex">
+        <div id="application" class="flex"></div>
+        
+        
+        <script src="js/bb/collections/cAllData.js"></script>
+        
+        <!-- views -->
+        <script src="js/bb/views/vMain.js"></script>
+        <script src="js/bb/views/main/vHeader.js"></script>
+        <script src="js/bb/views/main/vData.js"></script>
+        <script src="js/bb/views/main/vCharts.js"></script>
+        <script src="js/bb/views/main/vFooter.js"></script>
+        
+        
+        <script type="text/javascript" src="./build/scripts.min.js"></script>
+        <script src="js/libs/raphael.js"></script>
+        <script src="js/libs/moment.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/bb/routers/main.js"></script>
+        
+        <script src="js/bb/router.js"></script>
+        
+        <script type="text/javascript"  src="js/time.js"></script>
+        <script type="text/javascript"  src="js/chart.js"></script>
+        <script type="text/javascript"  src="js/deepAndTime.js"></script>
+    
+        <script type="text/javascript"  src="js/index.js"></script>
+        
+        <script id="tempMain" type="text/template"> </script>
+        <script id="tempHeader" type="text/template"> 
+            <div class="flex dateTime helvetica">
+                <div class="flex time gray"></div>
+                <div class="flex date"></div>
+            </div>
+            <div class="flex mode gray"> РУЧНОЙ РЕЖИМ </div>
+            <div class="flex user"> 
+                <div class="flex snp helvetica"> Иванов И. И. </div>
+                <div class="flex icon"></div>
+            </div>
+        </script>
+        <script id="tempData" type="text/template"> 
+                <div class="flex dataBlock"> 
+                    <div class="flex line1">
+                        <div class="flex symbolValue gray"> Q </div>
+                        <div class="flex setValue crystal blue">999</div>
+                    </div>
+                    <div class="flex line2">
+                        <div class="flex currentValue crystal gray">999</div>
+                    </div>
+                    <div class="flex line3 crystal green">
+                        <div class="flex bottomValue">0 нг</div>
+                        <div class="flex topValue">1000 вг</div>
+                    </div>
+                </div> 
+                <div class="flex dataBlock">
+                    
+                </div>
+                <div class="flex dataBlock">
+                    
+                </div>
+        </script>
+        <script id="tempCharts" type="text/template"> 
+            <div class='deepAndTimeBlock'>
+                <div id='deepAndTimeData'></div>
+                <div class='add'></div>
+            </div>
+            <div class='chartBlock _one'>
+                <div class='charts'></div>
+                <div class='markers'></div>
+            </div>
+            <div class='chartBlock _two'><div class='chart'></div></div>
+            <div class='chartBlock _three'><div class='chart'></div></div>
+        </script>
+        <script id="tempFooter" type="text/template">
+           <!-- <div id="selectPeriod" class="flex" data-select="600">
+                <div class="flex period">10 минут</div>
+                <div class="flex line"></div>
+            </div>-->
+        </script>
+    </body>
+</html>
