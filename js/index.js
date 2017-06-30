@@ -34,7 +34,28 @@ function createData(time) {
     let d = [];
     var deep = 10000;
     for (let i = 0; i < 600; i++) {
-        d[i] = {dt: time - i, p1: randomInteger(90, 100), p2: randomInteger(110, 125), deep: deep};
+        let sv = {p1: 250, p2: 400, p3: 480};
+        let r = {p1: {min: 0, max: 250}, p2: {min: 0, max: 250}, p3: {min: 0, max: 250}, p4: {min: 34, max: 80}, p5: {min: 90, max: 120}, p6: {min: 150, max: 170},
+                p7: {min: 0, max: 250}, p8: {min: 0, max: 250}, p9: {min: 0, max: 250}, p10: {min: 34, max: 80}, p11: {min: 90, max: 120}, p12: {min: 150, max: 170}, p13: {min: 150, max: 170}};
+        d[i] = {
+            dt: time - i, 
+            setValue: sv, 
+            range: r, 
+            p1: randomInteger(90, 100), 
+            p2: randomInteger(110, 125), 
+            p3: randomInteger(140, 200),
+            p4: randomInteger(50, 80),
+            p5: randomInteger(100, 150), 
+            p6: randomInteger(160, 200), 
+            p7: randomInteger(11, 50), 
+            p8: randomInteger(60, 100), 
+            p9: randomInteger(120, 135),
+            p10: randomInteger(150, 180),
+            p11: randomInteger(200, 250), 
+            p12: randomInteger(260, 290), 
+            p13: randomInteger(300, 310), 
+            deep: deep
+        };
         deep = deep + 10;
     }
     return d;
@@ -43,8 +64,28 @@ function updateData(time,deep) {
     let i = 1;
     deep = deep + 10;
     setInterval(function () {
-       data.push({dt: time + i, p1: randomInteger(90, 100), p2: randomInteger(110, 125), deep: deep});
-       deep += 10;
-       i++;
+        let sv = {p1: 250, p2: 400, p3: 480};
+        let r = {p1: {min: 0, max: 250}, p2: {min: 0, max: 250}, p3: {min: 0, max: 250}, p4: {min: 34, max: 80}, p5: {min: 90, max: 120}, p6: {min: 150, max: 170},
+                p7: {min: 0, max: 250}, p8: {min: 0, max: 250}, p9: {min: 0, max: 250}, p10: {min: 34, max: 80}, p11: {min: 90, max: 120}, p12: {min: 150, max: 170}, p13: {min: 150, max: 170}};
+        data.push({
+            dt: time + i, 
+            setValue: sv, 
+            range: r, 
+            p1: randomInteger(90, 100), 
+            p2: randomInteger(110, 125), 
+            p3: randomInteger(140, 200),
+            p4: randomInteger(50, 80),
+            p5: randomInteger(100, 150), 
+            p6: randomInteger(160, 200), 
+            p7: randomInteger(11, 50), 
+            p8: randomInteger(60, 100), 
+            p9: randomInteger(120, 135),
+            p10: randomInteger(150, 180),
+            p11: randomInteger(200, 250), 
+            p12: randomInteger(260, 290), 
+            p13: randomInteger(300, 310), 
+            deep: deep});
+        deep += 10;
+        i++;
     }, 1000);
 }

@@ -27,8 +27,15 @@ function vMain () {
             
             return this;
         },
-        updateValueParam: function (data) {
-            console.log(data)
+        updateValue: function (name, value) {
+            $(".dataBlock._" + name).find(".currentValue").text(value);
+        },
+        updateSetValue: function (name, value) {
+            $(".dataBlock._" + name).find(".setValue").text(value);
+        },
+        updateRangeValue: function (name, value) {
+            $(".dataBlock._" + name).find(".bottomValue").text(value["min"] + " нг");
+            $(".dataBlock._" + name).find(".topValue").text(value["max"] + " вг");
         }
     });
     return view;

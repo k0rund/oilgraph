@@ -5,16 +5,11 @@
 class DeepAndTime {
 
     constructor(dataObject) {
-        /*this.nameContainer = undefined;
-        this.nameContainer = dataObject["id"];
-        this.width = $("#" + this.nameContainer).width();
-        this.height = $("#" + this.nameContainer).height();*/
-        
         this.$container = undefined;
         this.$container = dataObject["el"];
-        
         this.width = this.$container.width();
         this.height = this.$container.height();
+        this.offsetPositionText = 9;
         
     }
     /**
@@ -37,10 +32,10 @@ class DeepAndTime {
         this.$markersBlock = this.$container.children(".markers");
         
         this.canvas = Raphael(this.deepAndTimeDataBlock[0], this.width, this.deepAndTimeDataBlock.height());
-        let ratio = (($(".deepAndTimeBlock").height() - heightMarkerBlock) / 60).toFixed(4);
+        let ratio = (($(".deepAndTimeBlock").height() - heightMarkerBlock) / 120).toFixed(4);
         this.data.forEach(function (item, i, array) {
             let yPosition = parseInt((i) * ratio, 10) - 0.5;
-            if (item["dt"] % 5 === 0) {
+            if (item["dt"] % 10 === 0) {
                 coordinatesLineTime += " M " + xStart + " " + yPosition + " L" + that.width + " " + yPosition;
                 coordinatesTextTime.push({y: i, text: item["dt"]});
             }
@@ -66,7 +61,7 @@ class DeepAndTime {
 
         tt.forEach(function (item, i, array) {
             let object = that.canvas.text(xStart,
-                    (parseInt(item["y"] * ratio, 10) + 0.5) - 4,
+                    (parseInt(item["y"] * ratio, 10) + 0.5) - that.offsetPositionText,
                     moment.unix(parseInt((item["text"]), 10)).format('mm:ss'));
             object.attr('font-size', 16);
             object.attr("class", "timeText");
@@ -84,7 +79,7 @@ class DeepAndTime {
         
         td.forEach(function (item, i, array) {
             let object = that.canvas.text(that.width / 4 ,
-                    (parseInt(item["y"] * ratio, 10) + 0.5) - 4,
+                    (parseInt(item["y"] * ratio, 10) + 0.5) - that.offsetPositionText,
                     item["text"]);
             object.attr('font-size', 16);
         });

@@ -11,6 +11,7 @@ class Chart {
      * @param {Object} dataObject Объект с данными
      */
     constructor(dataObject) {
+        this.vCharts = dataObject.parent;
         this.titles = undefined;
         this.colors = undefined;
         this.$container = dataObject["el"];
@@ -38,6 +39,7 @@ class Chart {
         
         this.titles.forEach(function (item, i, array) {
             that.drawLine (item,that.colors[i]);
+            that.drawVerticalLine (5);
             that.drawMarkers (item,that.colors[i]);
         });
         
@@ -56,27 +58,45 @@ class Chart {
             that.createPatch (item,that.colors[i]);
         });*/
     }
+    drawVerticalLine (count) {
+        let val = this.$chartsBlock.width() / count;
+        let height = this.$chartsBlock.height();
+        let coordinates = "";
+        for (let i = 1; i < count; i++) {
+            coordinates += "M " + (val * i) + " " + 0 + " L" + (val * i) + " " + height;
+        }
+        let line = this.charts.path(coordinates);
+        line.attr("class", "lineVertical");
+        line.attr('stroke-dasharray', "5.5");
+    }
     drawLine (name, color) {
         let that = this;
         let path = "";
         let coordinatesLineTime = "";
         let heightMarkerBlock = $(".add").height();
-        let ratio = (($(".deepAndTimeBlock").height() - heightMarkerBlock) / 60).toFixed(4);
+        let ratio = (($(".deepAndTimeBlock").height() - heightMarkerBlock) / 120).toFixed(4);
+        let canvas;
+        let line;
         this.data.forEach(function (item, i, data) {
             if (i === 0) {
                 path += "M " + item[name] + " " + i;
             } else {
                 path += " L" + item[name] + " " + i;
             }
-            if (item["dt"] % 5 === 0) {
+            if (item["dt"] % 10 === 0) {
                 let yPosition = parseInt((i) * ratio, 10) - 0.5;
                 coordinatesLineTime += " M " + 0 + " " + yPosition + " L" + that.width + " " + yPosition;
             }
+            if (i === data.length - 1) {
+                that.vCharts.vMain.updateValue(name, item[name]);
+                that.vCharts.vMain.updateSetValue(name, item["setValue"][name]);
+                that.vCharts.vMain.updateRangeValue(name, item["range"][name]);
+            }
         });
-        let canvas = this.charts.path(path);
-        canvas.scale(1, (this.$chartsBlock.height() / 60).toFixed(4), 0, 0);
+        canvas = this.charts.path(path);
+        canvas.scale(1, (this.$chartsBlock.height() / 120).toFixed(4), 0, 0);
         canvas.attr({stroke: color});
-        let line = this.charts.path(coordinatesLineTime);
+        line = this.charts.path(coordinatesLineTime);
         line.attr("class", "line");
         line.attr('stroke-dasharray', "5.5");
     }

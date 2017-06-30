@@ -84,6 +84,7 @@ body {
     padding: 5px 5px 5px 5px;
     align-items: center;
     box-shadow: 0 0 6px rgba(0,0,0,0.5);
+    justify-content: center;
 }
 
 #charts {
@@ -160,6 +161,9 @@ body {
 .dataBlock:first-child {
     margin-left: 0px;
 }
+.dataBlock:last-child {
+    border-right: 0px;
+}
 .line1 {
     width: 100%;
     flex-basis: 33%;
@@ -192,6 +196,7 @@ body {
     flex-basis: 50px;
     flex-grow: 1;
     justify-content: flex-end;
+    padding-bottom: 0.8vh;
 }
 .currentValue {
     width: 100%;
@@ -256,6 +261,7 @@ body {
     background: #cccccc;
     margin-top: 6px;
 }
+
 .chartBlock .container {
     position: absolute;
     top:0px;
@@ -266,7 +272,11 @@ body {
     user-select: none;
 }
 .chartBlock .line {
-    stroke: rgba(250, 0, 0, 0.1);
+    stroke: rgb(204, 204, 204);
+    stroke-dasharray: 5.5;
+}
+.chartBlock .lineVertical  {
+    stroke: rgb(204, 204, 204);
     stroke-dasharray: 5.5;
 }
 .settings {
@@ -276,18 +286,13 @@ body {
     transition: top 0.2s ease-out 0.1s;
 }
 .deepAndTimeBlock {
-    /*border: 1px solid rgba(204, 204, 204, 0);
-    border-left: 2px solid rgb(204, 204, 204);
-    border-radius: 1px;*/
     flex-basis: 10%;
     border: 1px solid rgba(204, 204, 204, 0);
     box-sizing: content-box;
-    /* margin-left: 1.5%; */
     padding: 0.5px 0 0 0;
-    /*box-shadow: 0 0 6px rgba(0,0,0,0.5);*/
     flex-direction: column;
-    /* padding: 1px 0 0 0; */
     border-left: 2px solid rgb(204, 204, 204);
+    background: rgba(247, 247, 247, 1);
 }
 #deepAndTimeData {
     width: 99.8%;
